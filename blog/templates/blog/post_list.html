@@ -1,0 +1,25 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    {% for post in posts %}
+        <div class="post">
+            <div class="date">
+                {{ post.published_date }}
+            </div>
+            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+            <p>{{ post.text|linebreaksbr }}</p>
+            <span style="background-color:yellow"><b>Watson:</b></span>
+            <br><br>
+            <p>Translation: {{ post.obj2}}</p>
+            <p>Word Count: {{ post.w_count}} |
+            Letter Count: {{ post.c_count}}</p>
+            <span style="background-color:yellow"><b>Tone Analyzer results:</b></span>
+            <br><br>
+            <p>Tone name: {{ post.tonename1}} |
+            Score: {{ post.tonescore1}}</p>
+            <p>Tone name: {{ post.tonename2}} |
+            Score: {{ post.tonescore2}}</p>
+
+        </div>
+    {% endfor %}
+{% endblock %}
